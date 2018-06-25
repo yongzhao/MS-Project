@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<title>My Website Page</title>
+	<link href="css/main.css" rel="stylesheet" type="text/css">
+	<link href="css/styles.css" rel="stylesheet" type="text/css">
+	<link href="css/button.css" rel="stylesheet" type="text/css">
+	<link href="css/mediaqueries.css" rel="stylesheet" type="text/css">
+	<link href="http://fonts.googleapis.com/css?family=Abel" rel="stylesheet" type="text/css">
+	<link href="http://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]>
+			<script src="js/html5.js" type="text/javascript"></script>
+			<link href="css/ie.css" rel="stylesheet" type="text/css" />
+		<![endif]-->
+	<script src="js/jquery.js" type="text/javascript"></script>
+	<script src="js/main.js" type="text/javascript"></script>
+	
+	<script>
+	function registerDatabaseDataDisplay()
+	{
+		if (window.XMLHttpRequest)
+		{
+			xmlhttp=new XMLHttpRequest();
+		}
+		else
+		{    
+			xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		xmlhttp.onreadystatechange=function()
+		{
+			if (xmlhttp.readyState==4 && xmlhttp.status==200)
+			{
+				document.getElementById("registerdatabasedata").innerHTML=xmlhttp.responseText;
+			}
+		}
+		xmlhttp.open("GET","registerDatabaseDataDisplay.php?",true);
+		xmlhttp.send();
+	}
+	</script>
+	
+</head>
+	
+<body>
+	<!-- Start Header-->
+	<header id="header">
+			<div class="clearfix pageWidth">
+					<h1 id="logo">TN4-IP: Mini Grid System</h1>
+					<!-- Start Navigation--> 
+					<nav id="navigation"><a href="#" id="menu">Menu</a>
+					<ul>
+							<li><a href="index.html" title="Home">Home</a></li>
+							<li><a href="StaffBackEnd.html" 	title="Home">Staff Page</a></li>
+							<li>
+							<a href="saftyLogout.php" title="Logout">Logout</a></li>
+					</ul>
+			</nav>
+					<!-- End Navigation --> 
+			</div>
+	</header>
+	<!-- End Header--> 
+	<!-- Banner-->
+	
+	
+	<section>
+		<script>
+		registerDatabaseDataDisplay()
+		</script>
+		<article class="pageControl pageWidth">
+		<p>Existing house number:
+		<span id="registerdatabasedata"></span>
+		</p>
+			
+		<form action="staffRegister.php" method="post" style="margin:10px;">
+			
+		<table>	
+		<tr><td><strong>*House ID:</strong></td><td></td><td><input type="text" name="houseid"></td><td></td><td><strong>*Password:</strong></td><td></td><td><input type="text" name="password"></td></tr>
+			
+		<tr><td><strong>*Name:</strong></td><td></td><td><input type="text" name="name"></td><td></td><td><strong>*Mobile phone:</strong></td><td></td><td><input type="text" name="phone"></td></tr>	
+		
+		<tr><td><strong>*House Address:</strong></td><td></td><td><input type="text" name="address"></td><td></td><td><strong>*Battery Capacity:</strong></td><td></td><td><input type="text" name="batterycapacity"></td></tr>	
+		
+		<tr><td><strong>*IP:</strong></td><td></td><td><input type="text" name="ip"></td><td></td><td><strong>*Company Name:</strong></td><td></td><td><input type="text" name="companyname"></td></tr>	
+		</table>
+		<br>
+		<input type="submit" value="Create">
+		</form>
+		</article>
+	</section>
+	<!-- Start Footer-->
+	<footer id="footer">
+			<div class="copyRight pageWidth">© Copyright 2018 | My Website </div>
+	</footer>
+	<!-- END Footer-->
+</body>
+</html>

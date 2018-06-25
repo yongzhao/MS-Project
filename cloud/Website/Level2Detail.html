@@ -1,0 +1,246 @@
+<!doctype html>
+<html>
+<head>
+	<title>Level2Detail</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<link href="css/main.css" rel="stylesheet" type="text/css">
+	<link href="css/styles.css" rel="stylesheet" type="text/css">
+	<link href="css/button.css" rel="stylesheet" type="text/css">
+	<link href="css/mediaqueries.css" rel="stylesheet" type="text/css">
+	<link href="http://fonts.googleapis.com/css?family=Abel" rel="stylesheet" type="text/css">
+	<link href="http://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]>
+			<script src="js/html5.js" type="text/javascript"></script>
+			<link href="css/ie.css" rel="stylesheet" type="text/css" />
+		<![endif]-->
+	<script src="js/jquery.js" type="text/javascript"></script>
+	<script src="js/main.js" type="text/javascript"></script>
+	
+	<script>
+		function get_bulb2_quantity() {
+    		var bulb2_q = prompt("please enter the number of bulb","");
+    			if (bulb2_q == null){
+					alert("please enter a number");
+    			}else if (bulb2_q == ""){
+        			alert("please enter a number");
+				}else{
+					document.cookie="bulb2q="+bulb2_q+";"
+				}
+			}
+	</script>
+	<script>
+		function get_bulb2_power() {
+    		var bulb2_p = prompt("please enter the power of one bulb(W)","");
+    			if (bulb2_p == null){
+					alert("please enter a number");
+    			}else if (bulb2_p == ""){
+        			alert("please enter a number");
+				}else{
+					document.cookie="bulb2p="+bulb2_p+";"
+				}
+			}
+	</script>
+	
+	<script>
+		function get_airc_quantity() {
+    		var airc_q = prompt("please enter the number of air conditioner","");
+    			if (airc_q == null){
+					alert("please enter a number");
+    			}else if (airc_q == ""){
+        			alert("please enter a number");
+				}else{
+					document.cookie="aircq="+airc_q+";"
+				}
+			}
+	</script>
+	<script>
+		function get_airc_power() {
+    		var airc_p = prompt("please enter the power of one air conditioner(W)","");
+    			if (airc_p == null){
+					alert("please enter a number");
+    			}else if (airc_p == ""){
+        			alert("please enter a number");
+				}else{
+					document.cookie="aircp="+airc_p+";"
+				}
+			}
+	</script>
+	
+	<script>
+		function get_heater_quantity() {
+    		var heater_q = prompt("please enter the number of heater","");
+    			if (heater_q == null){
+					alert("please enter a number");
+    			}else if (heater_q == ""){
+        			alert("please enter a number");
+				}else{
+				document.cookie="heaterq="+heater_q+";"
+				}
+			}
+	</script>
+	<script>
+		function get_heater_power() {
+    		var heater_p = prompt("please enter the power of one heater(W)","");
+    			if (heater_p == null){
+					alert("please enter a number");
+    			}else if(heater_p == ""){
+        			alert("please enter a number");
+				}else{
+				document.cookie="heaterp="+heater_p+";"
+				}
+			}
+	</script>
+	
+	<script>
+		function get_pc_quantity() {
+    		var pc_q = prompt("please enter the number of PC","");
+    			if (pc_q == null){
+					alert("please enter a number");
+    			}else if (pc_q == ""){
+        			alert("please enter a number");
+				}else{
+					document.cookie="pcq="+pc_q+";"
+				}
+			}
+	</script>
+	<script>
+		function get_pc_power() {
+    		var pc_p = prompt("please enter the average power of PC(W)","");
+    			if (pc_p == null){
+					alert("please enter a number");
+    			}else if (pc_p == ""){
+        			alert("please enter a number");
+				}else{
+					document.cookie="pcp="+pc_p+";"
+				}
+			}
+	</script>
+	
+	<script>
+		function get_other2_power() {
+    		var other2_p = prompt("please enter the total power of other level2 applicants(kW)","");
+    			if (other2_p == null){
+					alert("please enter a number");
+    			}else if (other2_p == ""){
+        			alert("please enter a number");
+				}else{
+				document.cookie="other2p="+other2_p+";"
+				}
+			}
+	</script>
+	
+	
+	<script>
+	function level2DatabaseDataDisplay()
+	{
+		if (window.XMLHttpRequest)
+		{
+			xmlhttp=new XMLHttpRequest();
+		}
+		else
+		{    
+			xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		xmlhttp.onreadystatechange=function()
+		{
+			if (xmlhttp.readyState==4 && xmlhttp.status==200)
+			{
+				document.getElementById("level2databasedata").innerHTML=xmlhttp.responseText;
+			}
+		}
+		xmlhttp.open("GET","level2DatabaseDataDisplay.php?",true);
+		xmlhttp.send();
+	}
+	</script>
+</head>
+
+<body>
+<!-- Start Header-->
+<header id="header">
+	<div class="clearfix pageWidth">
+		<h1 id="logo">TN4-IP: Mini Grid System</h1>
+		<!-- Start Navigation--> 
+		<nav id="navigation1"><a href="#" id="menu">Menu</a>
+			<ul>
+				<li><a href="customer.html" title="UserHome">User Home</a></li>
+				<li><a href="usage.php" title="History Usage">History Usage</a></li>
+				<li><a href="settings.php" title="Settings">Settings</a></li>
+				<li><a href="saftyLogout.php" title="Logout">Logout</a></li>
+			</ul>
+		</nav>
+	</div>
+</header>
+<!-- End Header--> 
+
+<section>
+	<script>
+		level2DatabaseDataDisplay()
+	</script>
+	<div class="pageWidth"><h2>Level 2</h2>
+		<div>
+			<p>Current level2 appliances:
+			<span id="level2databasedata"></span>
+			</p>
+			<p>Modify level2 appliances below:
+			<table>
+			<tr>
+			<td>-----------------------</td>
+			<td>-----------</td><td>------------------</td><td>-------</td><td>---------------</td>
+			</tr>
+			<tr><td><strong>Appliances</strong></td><td></td><td><strong>Quantity</strong></td><td></td><td><strong>Power(W)</strong></td></tr>
+			
+			
+			<tr><td><strong>Bulb:</strong></td><td></td><td><input type="button" onClick="get_bulb2_quantity()" value="modify"></td><td></td>
+			<td><input type="button" onClick="get_bulb2_power()" value="modify"></td>
+			</tr>
+			
+			<tr><td><strong>Air Conditioner:</strong></td> <td></td><td><input type="button" onClick="get_airc_quantity()" value="modify"></td><td></td>
+			<td><input type="button" onClick="get_airc_power()" value="modify"></td>
+			</tr>
+				
+			<tr>
+			<td><strong>Heater:</strong></td><td></td>
+			<td><input type="button" onClick="get_heater_quantity()" value="modify"></td><td></td>
+			<td><input type="button" onClick="get_heater_power()" value="modify"></td>
+			</tr>
+				
+			<tr>
+			<td><strong>PC:</strong></td><td></td>
+			<td><input type="button" onClick="get_pc_quantity()" value="modify"></td><td></td>
+			<td><input type="button" onClick="get_pc_power()" value="modify"></td>
+			</tr>
+				
+			<tr>
+			<td><strong>Other:</strong></td><td></td>
+			<td>N/A</td><td></td>
+			<td><input type="button" onClick="get_other2_power()" value="modify"></td>
+			</tr>
+				
+			<tr>
+			<td>-----------------------</td>
+			<td>-----------</td><td>------------------</td><td>-------</td><td>---------------</td>
+			
+			</tr>
+			</table>
+			</p>
+		<p>
+		Please click the button to confirm your modification:
+		<form action="level2Confirm.php" method="post">
+		<input type="submit" value="Confirm"> 
+		</form>
+			  
+		</p>
+		</div>
+	</div>
+</section>
+	
+<!-- Start Footer-->
+<footer id="footer">	
+	<div class="copyRight pageWidth">
+		<p class="text-center">@ Copyright 2018 | All rights reserved.</p>
+	</div>
+</footer>
+<!-- END Footer-->
+</body>
+</html>

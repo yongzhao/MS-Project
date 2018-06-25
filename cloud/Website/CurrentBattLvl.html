@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+<head>
+	<title>Current Battery Level</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<link href="css/main.css" rel="stylesheet" type="text/css">
+	<link href="css/styles.css" rel="stylesheet" type="text/css">
+	<link href="css/button.css" rel="stylesheet" type="text/css">
+	<link href="css/mediaqueries.css" rel="stylesheet" type="text/css">
+	<link href="http://fonts.googleapis.com/css?family=Abel" rel="stylesheet" type="text/css">
+	<link href="http://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]>
+			<script src="js/html5.js" type="text/javascript"></script>
+			<link href="css/ie.css" rel="stylesheet" type="text/css" />
+		<![endif]-->
+	<script src="js/jquery.js" type="text/javascript"></script>
+	<script src="js/main.js" type="text/javascript"></script>
+	<script>
+		function get_bl() {
+    		var bl = prompt("please enter the critical battery level (%)","");
+			if (bl == null){
+				alert("please enter a number");
+			}else if (bl == ""){
+				alert("please enter a number");
+			}else{
+				document.cookie="batterylevel="+bl+";"
+			}
+    			//if (bl != null){
+					//document.cookie="batterylevel="+bl+";"
+	
+    			//}else{
+        			//alert("please enter a number");
+					//}
+			}
+	</script>
+	
+	<script>
+	function batteryLevelDisplay()
+	{
+		if (window.XMLHttpRequest)
+		{
+			xmlhttp=new XMLHttpRequest();
+		}
+		else
+		{    
+			xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		xmlhttp.onreadystatechange=function()
+		{
+			if (xmlhttp.readyState==4 && xmlhttp.status==200)
+			{
+				document.getElementById("batterylevel").innerHTML=xmlhttp.responseText;
+			}
+		}
+		xmlhttp.open("GET","batteryLevelDisplay.php?",true);
+		xmlhttp.send();
+	}
+	</script>
+
+</head>
+
+<body>
+<!-- Start Header-->
+<header id="header">
+	<div class="clearfix pageWidth">
+		<h1 id="logo">TN4-IP: Mini Grid System</h1>
+		<!-- Start Navigation--> 
+		<nav id="navigation1"><a href="#" id="menu">Menu</a>
+			<ul>
+				<li><a href="customer.html" title="UserHome">User Home</a></li>
+				<li><a href="usage.php" title="History Usage">History Usage</a></li>
+				<li><a href="settings.php" title="Settings">Settings</a></li>
+				<li><a href="saftyLogout.php" title="Logout">Logout</a></li>
+			</ul>
+		</nav>
+	</div>
+</header>
+<!-- End Header--> 
+
+<section>
+	<script>
+		batteryLevelDisplay()
+	</script>
+	<div class="pageWidth"><h2>Critical Battery Level</h2>
+		<div>
+			<p><span id="batterylevel"></span></p>
+			<p>
+			<table>
+				<tr>
+				<td><strong>Critical Battery Level (%)</strong></td><td><input type="button" onClick="get_bl()" value="modify"></td>
+				</tr>
+			</table>
+			</p>
+			<p>
+		    Please click the button to confirm your modification:
+		    <form action="batteryLevelConfirm.php" method="post">
+		    <input type="submit" value="Confirm"> 
+		    </form>
+			  
+		</p>
+		</div>
+	</div>
+</section>
+	
+<!-- Start Footer-->
+<footer id="footer">	
+	<div class="copyRight pageWidth">
+		<p class="text-center">@ Copyright 2018 | All rights reserved.</p>
+	</div>
+</footer>
+<!-- END Footer-->
+</body>
+</html>
